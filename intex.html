@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="jd.css">
+ <script type="text/javascript">
+  window.onload=function(){
+  var  oareamini=document.getElementById('ui-areamini-text');
+  var  opic=document.getElementById('pic');
+  var oprev=document.getElementById('prev');
+  var onext=document.getElementById('next');
+  var oimg1=document.getElementById('img1');
+  var oUl=opic.getElementsByTagName('ul')[0];
+  var oLi=oUl.getElementsByTagName('li');
+  var ocity=document.getElementById('city');
+  var ospan=ocity.getElementsByTagName('span')[0];
+  var ocitys=document.getElementById('citys');
+  var oaa=ocitys.getElementsByTagName('a');
+  var  odl=ocitys.getElementsByTagName('dl')[0];
+  var  odt=odl.getElementsByTagName('dt');
+  var ojd=document.getElementById('jd');
+  var omjd=document.getElementById('mjd');
+  var oyuan1=document.getElementById('yuan1');
+  var oyuan2=document.getElementById('yuan2');
+  var oyuan3=document.getElementById('yuan3');
+  var arrUrl=['图/01.jpg','图/02.jpg','图/03.jpg','图/04.jpg','图/05.jpg'];
+  var cateitem1=document.getElementById('cate-item1');
+  var otolist=document.getElementById('tolist');
+  var cateitem2=document.getElementById('cate-item2');
+  var otolist1=document.getElementById('tolist1');
+  var ozclist2=document.getElementById('zclist2');
+  var ozclist3=document.getElementById('zclist3');
+  var omod=document.getElementById('mod');
+  var omod1=document.getElementById('mod1');
+  var ozclist=document.getElementById('zclist');
+  var osk2=document.getElementById('sk2');
+  var oimg3=osk2.getElementsByTagName('img');
+  var oact=document.getElementById('news_tab_active');
+  var opre=document.getElementById('pre');
+  var onex=document.getElementById('nex');
+  var osk1=document.getElementById('sk1');
+  var spend="";
+  var num=0;
+  var old1="";
+  var ootime="";
+  var otime1="";
+  var otime2="";
+  var otime3="";
+  var otime4="";
+  var str="";
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 轮播图
+        function luo(){
+        oimg1.src=arrUrl[num];
+        
+        };
+        luo();
+        onext.onclick=function (){
+        num++;
+        if(num==arrUrl.length){
+        oLi[num-1].className='';
+        num=0;
+        oLi[num].className='active';
+        }
+
+        else{
+        oLi[num].className='active';
+        oLi[num-1].className='';
+        }
+
+        luo();
+               
+        };
+        for(var i=0;i<arrUrl.length;i++){
+        oUl.innerHTML+='<li></li>';
+        }
+        oldli=oLi[num];
+        oimg1.src=arrUrl[num];
+        oLi[0].className='active'
+        for(var i = 0; i < oLi.length; i++) {
+        oLi[i].index = i;
+        oLi[i].onmouseover=function (){
+        oimg1.src=arrUrl[this.index]
+        for(var i = 0; i < oLi.length; i++) {
+        oLi[i].className = "";
+                }
+        oLi[this.index].className = "active";
+              num = this.index
+            }        
+        }
+
+
+        oprev.onclick=function(){
+                  num--;
+              if(num==-1){
+                oLi[num+1].className='';
+                num=arrUrl.length-1;
+                 oLi[num].className='active';
+              }
+
+              else{
+              oLi[num].className='active';
+              oLi[num+1].className='';
+              }
+
+              luo();       
+              };
+
+          otime1=setInterval(function(){
+                 num++;
+                num%=arrUrl.length;
+                luo();
+                if(num===0){
+                oLi[arrUrl.length-1].className='';
+                num=0;
+                 oLi[num].className='active';
+                 }
+
+                else{
+                oLi[num].className='active';
+                oLi[num-1].className='';
+                }
+
+               },800);
+
+
+              oUl.onmouseover=onext.onmouseover=oprev.onmouseover=oimg1.onmouseover=function(){
+              clearInterval(otime1);
+              }
+
+            oUl.onmouseout=onext.onmouseout=oprev.onmouseout=oimg1.onmouseout=function(){
+          otime1=setInterval(function(){
+          num++;
+          num%=arrUrl.length;
+          luo();
+          if(num===0){
+          oLi[arrUrl.length-1].className='';
+          num=0;
+          oLi[num].className='active';
+              }
+              else{
+              oLi[num].className='active';
+              oLi[num-1].className='';
+              }
+            },800);}            
+         opic.onmouseout=function(){
+         onext.style.display='none';
+         oprev.style.display='none';
+         }
+         opic.onmouseover=function(){
+        onext.style.display='block';
+       oprev.style.display='block';
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ocity.onmouseover=ocitys.onmouseover=function(){
+      clearTimeout(ootime);
+      ocitys.style.display='block';
+      ocity.style.background=' #FAFAFA';
+     
+    }
+ocity.onmouseout=ocitys.onmouseout=function(){
+      
+      ootime=setTimeout(function () {
+      ocity.style.background='none';
+      ocitys.style.display='none';
+      },300);
+      
+    }
+   
+ for(var i=0;i<odt.length;i++){
+  
+     odt[i].onclick=function(){
+      
+       str=this.innerHTML;
+    
+
+       oareamini.innerHTML=str;
+
+   ocitys.style.display='none';
+   for(var i=0;i<odt.length;i++){
+   odt[i].style.background='';
+   odt[i].style.color='';
+   this.style.background = '#F10215';
+    this.style.color='#FFFFFF';
+   
+}
+     
+  }
+
+  
+  }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ojd.onmouseover=omjd.onmouseover=function(){
+      clearTimeout(otime2);
+      omjd.style.display='block';
+      ojd.style.background='#FAFAFA';
+     
+    }
+    ojd.onmouseout=omjd.onmouseout=function(){
+       clearTimeout(otime2);
+      otime2=setTimeout(function () {
+      ojd.style.background='none';
+      omjd.style.display='none';
+      },200);
+      
+    }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////倒计时器
+      
+              var hh,tt,ss;
+              var data_time=60000;
+              setInterval(function () {
+                
+                var EndTime=new Date();
+                var NowTime=new Date();
+                    
+                     // var data_time =EndTime.getTime() - NowTime.getTime();
+                    data_time-=500;
+                  
+                      console.log('hh='+data_time/500/60/60);
+                      if (data_time>0) {
+                        hh=Math.floor(data_time/500/60/60);
+                        tt=Math.floor(data_time/500/60%60);
+                        ss=Math.floor(data_time/500%60)
+                        ////console.log(data_time/500/60/60%24)
+                      }
+                      $id('yuan1').innerHTML=dblDate(hh);
+                      $id('yuan2').innerHTML=dblDate(tt);
+                      $id('yuan3').innerHTML=dblDate(ss);
+                      if (data_time==0) {
+                       var  spend=parseInt(getStyle(osk2,'left'));
+                       osk2.style.left =spend+972+'px';
+                       if (spend==0) {
+                      osk2.style.left =-1944+'px';
+                           }
+                  
+                        data_time=7200000;
+                      }
+              },500);
+
+              function dblDate(n) {
+                // body...
+                if(n<10){
+                  return '0'+n;
+                }
+                else {
+                  return n;
+                }
+              }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+cateitem1.onmouseover=otolist.onmouseover=function(){
+       clearTimeout(otime3);
+       cateitem1.style.display='block';
+      otolist.style.background='#999395';
+     
+    };
+   cateitem1.onmouseout=otolist.onmouseout=function(){
+      otime3=setTimeout(function () {
+     otolist.style.background='none';
+     cateitem1.style.display='none';
+      },100);
+ 
+      
+    };
+    cateitem2.onmouseover=otolist1.onmouseover=function(){
+       clearTimeout(otime4);
+       cateitem2.style.display='block';
+      otolist1.style.background='#999395';
+     
+    };
+   cateitem2.onmouseout=otolist1.onmouseout=function(){
+      otime4=setTimeout(function () {
+     otolist1.style.background='none';
+     cateitem2.style.display='none';
+      },100);
+   };
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+omod.onmouseover=function(){
+  ozclist2.style.display ='block';
+  ozclist3.style.display ='none';
+  var pos1=parseInt(getStyle(oact,'left'));
+  oact.style.left=10+'px';
+
+}
+omod1.onmouseover=function(){
+  ozclist3.style.display ='block';
+  ozclist2.style.display ='none';
+  var pos1=parseInt(getStyle(oact,'left'));
+  oact.style.left=60+'px';
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////图片上移
+        for(var i=0;i<oimg3.length;i++){
+          oimg3[i].onmouseover=function(){
+        
+      var pos=parseInt(getStyle(this,'top'));
+    this.style.top=pos-10+'px';
+   
+      }
+       oimg3[i].onmouseout=function(){
+      var pos=parseInt(getStyle(this,'top'));
+    this.style.top=pos+10+'px';
+
+      }
+        }
+
+        function getStyle(obj,attr){return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];}
+    
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      function $id(id) {
+        return document.getElementById(id);
+        alert(document.getElementById(id));
+      };
+
+
+        //右侧促销公告begin
+         function obj_oMouse(objitem,obj) {
+            var obj_item=[];
+           for(var item in objitem){
+              obj_item.push($id(objitem[item]));
+           }
+         console.log(obj_item);
+          // alert(obj_item.length)
+            for(var key in obj_item)
+            {
+              //console.log(key);
+              obj_item[key].index=key;
+           // console.log(key);
+          // 
+               if(key%2==0)
+               {
+                     // console.log(obj_item[key-0+1]);
+                    obj_item[key].onmouseover=function () {
+                              // body...
+                           //alert(123);
+                          for(var key2 in obj_item)
+                          {
+                             if(key2%2==0){
+                                obj_item[key2-0+1].style.display = 'none';
+                             }
+                          }
+                     // console.log(this.index-0+1);
+                       obj_item[this.index-0+1].style.display = 'block';
+                       if(obj)
+                       {
+                       //  console.log(this.index);
+                        var itar=(obj_item[this.index].offsetWidth+4)*(this.index>0?(this.index/2):0);
+                       
+                              obj.style.left=itar+'px';
+                       }
+                     }
+                  
+                 }
+                  
+            }
+         }
+       
+        //var oit=['nav_hot','hot_mas','nav_gg','gg_mas'];
+
+        // obj_oMouse(oit,$id("nav_tab"));
+
+     
+        var oit1=['jd_nav_ph','jd_phone_sever',
+                  'jd_nav_jp','jd_airplane_sever',
+                  'jd_nav_jd','jd_tavern_sever',
+                   'jd_nav_yx','jd_game_sever'];
+       obj_oMouse(oit1,$id("sever_tab"));
+
+            
+      (function () {
+        // body...
+          //   (1)
+     
+       var oit_1=['phone_hf','phone_sever1','phone_ll','phone_sever2','phone_tc','phone_sever3'];
+       obj_oMouse2(oit_1);
+        //   (2)
+        var oit_2=['airplane_gn','airplane_sever1','airplane_gj','airplane_sever2','airplane_th','airplane_img'];
+         // console.log(oit2);
+         obj_oMouse2(oit_2);
+        //   (3)酒店
+       //   (4)游戏
+      })()
+           
+
+
+        // 小内容封装，obj为副标题
+        function obj_oMouse2(objitem) {
+           var obj_item=[];
+          for(var item in objitem){
+             obj_item.push($id(objitem[item]));
+          }
+          var ihover=0;
+          obj_item[ihover].className='hover_nav';
+          obj_item[ihover].getElementsByTagName('a')[0].style.color = '#fff';
+          obj_item[ihover].getElementsByClassName("sj")[0].style.display = 'block';
+         //console.log(obj_item);
+         // alert(obj_item.length)
+           for(var key in obj_item)
+           {
+          
+          // console.log(key);
+         // 
+         obj_item[key].index=key;
+              if(key%2==0)
+              {
+                   
+                    // console.log(obj_item[key-0+1]);
+                   obj_item[key].onmouseover=function () {
+                             // body...
+                          //alert(123);
+
+                         for(var key2 in obj_item)
+                         {
+                            if(key2%2==0){    
+                               obj_item[key2-0+1].style.display = 'none';
+                                console.log(key2);
+                               obj_item[key2].className='';
+                               obj_item[key2].getElementsByTagName('a')[0].style.color = '';
+                               obj_item[key2].getElementsByClassName("sj")[0].style.display = 'none';
+                            }
+                         }
+                    // console.log(this.index-0+1);
+                      obj_item[this.index-0+1].style.display = 'block';
+                      ihover=this.index;
+                      obj_item[ihover].className='hover_nav';
+                      obj_item[ihover].getElementsByTagName('a')[0].style.color = '#fff';
+                      obj_item[ihover].getElementsByClassName("sj")[0].style.display = 'block';
+                    }
+                 
+           }
+        }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+ osk1.onmouseout=function(){
+         onex.style.display='none';
+         opre.style.display='none';
+         }
+         osk1.onmouseover=function(){
+        onex.style.display='block';
+       opre.style.display='block';
+        }
+     
+         onex.onclick=function(){
+       var  spend=parseInt(getStyle(osk2,'left'));
+       osk2.style.left =spend+972+'px';
+       if (spend==0) {
+         osk2.style.left =-1944+'px';
+        }
+  
+       }
+        
+        opre.onclick=function(){
+       var  spend=parseInt(getStyle(osk2,'left'));
+      sk2.style.left =spend-972+'px';
+      if (spend==-1944) {
+         osk2.style.left =0+'px';
+        }
+        }
+
+     var  spend=parseInt(getStyle(olst,'left'));
+
+    function getStyle(obj,attr){return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];}
+//////////////////////////////////////////////////////////////////////////////////
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<div id="top" >
+<div class="daohan">
+<div class="list">
+<div id="city">
+ <i class="glyphicon glyphicon-map-marker " class="danger"></i>
+<span id="ui-areamini-text" title="北京">
+  北京</span>
+</div>
+</div>
+<div class="lists">
+<ul >
+   <li><a href="javascript:;">你好，请登录</a></li>
+  <li><a href="javascript:;"><span>免费注册</span></a></li>
+   <li>|</li>
+   <li><a href="javascript:;">我的订单</a></li>
+    <li>|</li>
+
+
+
+
+
+    <li id="jd"><a href="javascript:;">我的京东▼</a>
+    <div id="mjd">
+    <div id="jd1">
+    <div class="listjd">
+   <a href="javascript:;">待处理订单</a>
+    </div>
+    <div  class="listjd">
+   <a href="javascript:;">消息</a>
+   </div>
+   <div  class="listjd">
+   <a href="javascript:;">返修退换货</a>
+    </div>
+   <div  class="listjd">
+   <a href="javascript:;">我的问答</a>
+    </div >
+   <div  class="listjd">
+   <a href="javascript:;">降价商品</a>
+    </div>
+   <div  class="listjd">
+   <a href="javascript:;">我的关注</a>
+   </div>
+    </div>
+
+    <div id="jd2">
+   <div class="listjd">
+   <a href="javascript:;">我的京豆</a>
+    </div>
+    <div  class="listjd">
+   <a href="javascript:;">我的优惠劵</a>
+   </div>
+   <div  class="listjd">
+   <a href="javascript:;">我的白条</a>
+    </div>
+   <div  class="listjd">
+   <a href="javascript:;">我的理财</a>
+    </div >
+    </div>
+    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+     <li>|</li>
+     <li><a href="javascript:;">京东会员</a></li>
+      <li>|</li>
+      <li><a href="javascript:;">企业采购</a></li>
+       <li>|</li>
+       <li>客户服务▼</li>
+       <li>|</li>
+       <li>网站导航▼</li>
+       <li>|</li>
+       <li>手机京东</li>
+   </ul>
+    </div>
+    </div >
+    </div>
+  <div id="top2">
+
+  <div  class="w">
+  
+ <div id="navitems">
+	<ul class="group1">
+	<li><a href="javascript:;">秒杀</a></li>
+	<li><a href="javascript:;">优惠劵</a></li>
+	<li><a href="javascript:;">闪购</a></li>
+	<li><a href="javascript:;">拍卖</a></li>
+	<li><a href="javascript:;">服装城</a></li>
+	<li><a href="javascript:;">京东超市</a></li>
+	<li><a href="javascript:;">生鲜</a></li>
+	<li><a href="javascript:;">全球购</a></li>
+	<li><a href="javascript:;">京东金融</a></li>
+	</ul>
+	</div>
+  <div  class="search">
+
+
+
+  <div id="citys">
+  <dl>
+        	<a href="javascript:;"><dt>北京</dt></a>
+        	<a href="javascript:;"><dt>上海</dt></a>
+        	<a href="javascript:;"><dt>天津</dt></a>
+        	<a href="javascript:;"><dt>重庆</dt></a>
+        	<a href="javascript:;"><dt>河北</dt></a>
+        	<a href="javascript:;"><dt>山西</dt></a>
+        	<a href="javascript:;"><dt>河南</dt></a>
+        	<a href="javascript:;"><dt>辽宁</dt></a>
+        	<a href="javascript:;"><dt>吉林</dt></a>
+        	<a href="javascript:;"><dt>黑龙江</dt></a>
+        	<a href="javascript:;"><dt>浙江</dt></a>
+        	<a href="javascript:;"><dt>江苏</dt></a>
+        	<a href="javascript:;"><dt>山东</dt></a>
+        	<a href="javascript:;"><dt>安徽</dt></a>
+        	<a href="javascript:;"><dt>内蒙古</dt></a>
+        	<a href="javascript:;"><dt>福建</dt></a>
+        	<a href="javascript:;"><dt>湖北</dt></a>
+        	<a href="javascript:;"><dt>湖南</dt></a>
+        	<a href="javascript:;"><dt>广东</dt></a>
+        	<a href="javascript:;"><dt>广西</dt></a>
+        	<a href="javascript:;"><dt>江西</dt></a>
+        	<a href="javascript:;"><dt>四川</dt></a>
+        	<a href="javascript:;"><dt>海南</dt></a>
+        	<a href="javascript:;"><dt>贵州</dt></a>
+        	<a href="javascript:;"><dt>云南</dt></a>
+        	<a href="javascript:;"><dt>西藏</dt></a>
+        	<a href="javascript:;"><dt>陕西</dt></a>
+        	<a href="javascript:;"><dt>甘肃</dt></a>
+        	<a href="javascript:;"><dt>青海</dt></a>
+        	<a href="javascript:;"><dt>宁夏</dt></a>
+        	<a href="javascript:;"><dt>新疆</dt></a>
+        	<a href="javascript:;"><dt>港澳</dt></a>
+        	<a href="javascript:;"><dt>台湾</dt></a>
+        	<a href="javascript:;"><dt>海外</dt></a>
+        	<a href="javascript:;"><dt>钓鱼台</dt></a>
+        </dl>
+
+  </div>
+
+
+
+
+
+  <input  type="text" class="kuan" value="商品" onFocus="if (value =='商品'){value =''}" onBlur="if (value ==''){value='商品' }"/><input id="obottom" class="anniu" type="button" value="搜索">
+    <div id="myjdg">
+          <!--  <span class="oglyphicon1 glyphicon-shopping-cart"></span> -->
+          <img src="图片/05.png" alt="" width="20px" height="20px">
+          <a href="javascript:;"><span>我的购物车</span></a>
+          <em class="zero">0</em>
+        </div>
+  </div>
+ 	<ul >
+	<li><a href="javascript:;"><span>低到5折</span></a></li>
+	<li><a href="javascript:;">手机新品季</a></li>
+	<li><a href="javascript:;">花肥</a></li>
+	<li><a href="javascript:;">adadis 89元</a></li>
+	<li><a href="javascript:;">品质家电</a></li>
+	<li><a href="javascript:;">探路者</a></li>
+	<li><a href="javascript:;">毛衣女宽松</a></li>
+	<li><a href="javascript:;">两件7折</a></li>
+	<li><a href="javascript:;">休闲食品</a></li>
+	</ul>
+  </div>
+  <div id="fs">
+  	<div class="inner">
+
+
+
+
+   <div id="cate-item1">
+  
+   <div class="cate1">
+    <ul>
+    <li><a href="javascript:;">家电馆 ></a></li>
+    <li><a href="javascript:;">品牌日 ></a></li>
+    <li><a href="javascript:;">智能生活馆 ></a></li>
+    <li><a href="javascript:;">京东进化馆 ></a></li>
+    <li><a href="javascript:;">城镇体验馆 ></a></li>
+    <li><a href="javascript:;">家电众筹馆 ></a></li>
+
+    </ul>
+   </div>
+
+   <div class="cate2">
+   	<div class="cate-img">
+   	<a href="javascript:;"><img src="图片01/13.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/14.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/15.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/16.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/17.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/18.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/19.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/20.jpeg" width="81px" height="34px" ></a>
+   	</div>
+   	<div class="cate-img1">
+   	 <a href="javascript:;"><img src="图片01/21.jpeg" width="164px" height="134px" ></a>
+    <a href="javascript:;"><img src="图片01/22.jpeg" width="164px" height="134px" ></a>
+   	</div>
+   </div>
+   <div class="cate3">
+
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">电视 ></a></dt>
+    <dd class="odd"><a href="javascript:;">合资品牌</a></dd>
+    <dd class="odd"><a href="javascript:;">国产品牌</a></dd>
+    <dd class="odd"><a href="javascript:;">互联网品牌</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">空调 ></a></dt>
+    <dd class="odd"><a href="javascript:;">壁挂式空调</a></dd>
+    <dd class="odd"><a href="javascript:;">柜式空调</a></dd>
+    <dd class="odd"><a href="javascript:;">中央空调</a></dd>
+    <dd class="odd"><a href="javascript:;">空调配件</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">洗衣机 ></a></dt>
+    <dd class="odd"><a href="javascript:;">滚筒洗衣机</a></dd>
+    <dd class="odd"><a href="javascript:;">滚筒洗衣机</a></dd>
+    <dd class="odd"><a href="javascript:;">波轮洗衣机</a></dd>
+    <dd class="odd"><a href="javascript:;">迷你洗衣机</a></dd>
+    <dd class="odd"><a href="javascript:;">洗衣机配件</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">冰箱 ></a></dt>
+    <dd class="odd"><a href="javascript:;">多门</a></dd>
+    <dd class="odd"><a href="javascript:;">对开门</a></dd>
+    <dd class="odd"><a href="javascript:;">三门</a></dd>
+    <dd class="odd"><a href="javascript:;">双门</a></dd>
+    <dd class="odd"><a href="javascript:;">冰柜/冰吧</a></dd>
+    <dd class="odd"><a href="javascript:;">酒柜</a></dd>
+    <dd class="odd"><a href="javascript:;">冰箱配件</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">厨卫大件 ></a></dt>
+    <dd class="odd"><a href="javascript:;">燃气灶</a></dd>
+    <dd class="odd"><a href="javascript:;">烟灶套装</a></dd>
+    <dd class="odd"><a href="javascript:;">消毒柜</a></dd>
+    <dd class="odd"><a href="javascript:;">洗碗机</a></dd>
+    <dd class="odd"><a href="javascript:;">电热水汽</a></dd>
+    <dd class="odd"><a href="javascript:;">燃气热水器</a></dd>
+    <dd class="odd"><a href="javascript:;">嵌入式厨电</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">厨卫小电 ></a></dt>
+    <dd class="odd"><a href="javascript:;">电饭煲</a></dd>
+    <dd class="odd"><a href="javascript:;">微波炉</a></dd>
+    <dd class="odd"><a href="javascript:;">电烤箱</a></dd>
+    <dd class="odd"><a href="javascript:;">电磁炉</a></dd>
+    <dd class="odd"><a href="javascript:;">电压力锅</a></dd>
+    <dd class="odd"><a href="javascript:;">豆浆机</a></dd>
+    <dd class="odd"><a href="javascript:;">咖啡机</a></dd>
+    <dd class="odd"><a href="javascript:;">面包机</a></dd>
+    <dd class="odd"><a href="javascript:;">榨汁机</a></dd>
+    <dd class="odd"><a href="javascript:;">料理机</a></dd>
+    <dd class="odd"><a href="javascript:;">电饼铛</a></dd>
+    <dd class="odd"><a href="javascript:;">养生壶/煎药壶</a></dd>
+    <dd class="odd"><a href="javascript:;">煮蛋机</a></dd>
+    <dd class="odd"><a href="javascript:;">电水壶/热水壶</a></dd>
+    <dd class="odd"><a href="javascript:;">电炖锅</a></dd>
+    <dd class="odd"><a href="javascript:;">电烧烤炉</a></dd>
+    <dd class="odd"><a href="javascript:;">电热饭盒</a></dd>
+    <dd class="odd"><a href="javascript:;">其他厨电电器</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">生活电器 ></a></dt>
+    <dd class="odd"><a href="javascript:;">电风扇</a></dd>
+    <dd class="odd"><a href="javascript:;">冷风扇</a></dd>
+    <dd class="odd"><a href="javascript:;">吸尘器</a></dd>
+    <dd class="odd"><a href="javascript:;">进化器</a></dd>
+    <dd class="odd"><a href="javascript:;">扫地机器人</a></dd>
+    <dd class="odd"><a href="javascript:;">加湿器</a></dd>
+    <dd class="odd"><a href="javascript:;">挂烫机/熨斗</a></dd>
+    <dd class="odd"><a href="javascript:;">取暖电器</a></dd>
+    <dd class="odd"><a href="javascript:;">插座</a></dd>
+    <dd class="odd"><a href="javascript:;">电话机</a></dd>
+    <dd class="odd"><a href="javascript:;">饮水机</a></dd>
+    <dd class="odd"><a href="javascript:;">净水器</a></dd>
+    <dd class="odd"><a href="javascript:;">除湿器</a></dd>
+    <dd class="odd"><a href="javascript:;">干衣机</a></dd>
+    <dd class="odd"><a href="javascript:;">清洁机</a></dd>
+    <dd class="odd"><a href="javascript:;">收/录音机</a></dd>
+    <dd class="odd"><a href="javascript:;">其他生活电器</a></dd>
+    <dd class="odd"><a href="javascript:;">生活电器配件</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">个护健康 ></a></dt>
+    <dd class="odd"><a href="javascript:;">剃须刀</a></dd>
+    <dd class="odd"><a href="javascript:;">口腔护理</a></dd>
+    <dd class="odd"><a href="javascript:;">电吹风</a></dd>
+    <dd class="odd"><a href="javascript:;">美容器</a></dd>
+    <dd class="odd"><a href="javascript:;">卷/直发器</a></dd>
+    <dd class="odd"><a href="javascript:;">理发器</a></dd>
+    <dd class="odd"><a href="javascript:;">剃/脱毛器</a></dd>
+    <dd class="odd"><a href="javascript:;">足浴盆</a></dd>
+    <dd class="odd"><a href="javascript:;">健康秤/厨房秤</a></dd>
+    <dd class="odd"><a href="javascript:;">按摩器</a></dd>
+    <dd class="odd"><a href="javascript:;">按摩椅</a></dd>
+    <dd class="odd"><a href="javascript:;">其他健康护理</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">家庭影音 ></a></dt>
+    <dd class="odd"><a href="javascript:;">家庭影院</a></dd>
+    <dd class="odd"><a href="javascript:;">迷你音响</a></dd>
+    <dd class="odd"><a href="javascript:;">DVD</a></dd>
+    <dd class="odd"><a href="javascript:;">电视影音配件</a></dd>
+    </dl>
+     <dl class="odl">
+    <dt class="odt"><a href="javascript:;">进口电器 ></a></dt>
+    <dd class="odd"><a href="javascript:;">进口电器</a></dd>
+    </dl>
+  </div>
+
+   </div>
+
+
+ <div id="cate-item2">
+
+   <div  class="cae2">
+    <ul>
+    <li><a href="javascript:;">玩3c ></a></li>
+    <li><a href="javascript:;">手机频道 ></a></li>
+    <li><a href="javascript:;">网上营业厅 ></a></li>
+    <li><a href="javascript:;">配件选购中心 ></a></li>
+    <li><a href="javascript:;">影像club ></a></li>
+    <li><a href="javascript:;">以旧换新 ></a></li>
+
+    </ul>  
+
+
+   </div>
+
+<div class="cae3">
+  <div class="cate-img2">
+   <a href="javascript:;"><img src="图片01/23.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/24.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/25.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/26.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/27.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/30.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/31.jpeg" width="81px" height="34px" ></a>
+    <a href="javascript:;"><img src="图片01/32.jpeg" width="81px" height="34px" ></a>
+  </div>
+  <div class="cate-img3">
+    <a href="javascript:;"><img src="图片01/28.jpeg" width="164px" height="134px" ></a>
+    <a href="javascript:;"><img src="图片01/29.jpeg" width="164px" height="134px" ></a> 
+  </div>
+  </div>
+
+  <div class="cae4">
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">手机通讯 ></a></dt>
+    <dd class="odd"><a href="javascript:;">手机</a></dd>
+    <dd class="odd"><a href="javascript:;">对讲机</a></dd>
+    <dd class="odd"><a href="javascript:;">以旧换新</a></dd>
+    <dd class="odd"><a href="javascript:;">手机维修</a></dd>
+    </dl>
+    <dl class="odl">
+    <dt class="odt"><a href="javascript:;">运营商 ></a></dt>
+    <dd class="odd"><a href="javascript:;">和约机</a></dd>
+    <dd class="odd"><a href="javascript:;">选号码</a></dd>
+    <dd class="odd"><a href="javascript:;">固话宽带</a></dd>
+    <dd class="odd"><a href="javascript:;">办套餐</a></dd>
+    <dd class="odd"><a href="javascript:;">中国电信</a></dd>
+    <dd class="odd"><a href="javascript:;">中国移动</a></dd>
+    <dd class="odd"><a href="javascript:;">中国联通</a></dd>
+    <dd class="odd"><a href="javascript:;">京东通信</a></dd>
+    <dd class="odd"><a href="javascript:;">170选号</a></dd>
+    </dl>
+    <dl class="odl">
+    <dt class="odt"><a href="javascript:;">手机配件 ></a></dt>
+    <dd class="odd"><a href="javascript:;">手机壳</a></dd>
+    <dd class="odd"><a href="javascript:;">贴膜</a></dd>
+    <dd class="odd"><a href="javascript:;">手机储存卡</a></dd>
+    <dd class="odd"><a href="javascript:;">数据线</a></dd>
+    <dd class="odd"><a href="javascript:;">充电器</a></dd>
+    <dd class="odd"><a href="javascript:;">手机耳机</a></dd>
+    <dd class="odd"><a href="javascript:;">创意配件</a></dd>
+    <dd class="odd"><a href="javascript:;">手机饰品</a></dd>
+    <dd class="odd"><a href="javascript:;">手机电池</a></dd>
+    <dd class="odd"><a href="javascript:;">苹果周边</a></dd>
+    <dd class="odd"><a href="javascript:;">移动电源</a></dd>
+    <dd class="odd"><a href="javascript:;">蓝牙耳机</a></dd>
+     <dd class="odd"><a href="javascript:;">手机支架</a></dd>
+    <dd class="odd"><a href="javascript:;">车载配件</a></dd>
+    <dd class="odd"><a href="javascript:;">拍照配件</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">摄影摄像 ></a></dt>
+    <dd class="odd"><a href="javascript:;">数码相机</a></dd>
+    <dd class="odd"><a href="javascript:;">单电/微单相机</a></dd>
+    <dd class="odd"><a href="javascript:;">单反相机</a></dd>
+    <dd class="odd"><a href="javascript:;">拍立得</a></dd>
+    <dd class="odd"><a href="javascript:;">运动相机</a></dd>
+    <dd class="odd"><a href="javascript:;">摄像机</a></dd>
+    <dd class="odd"><a href="javascript:;">镜头</a></dd>
+     <dd class="odd"><a href="javascript:;">户外器材</a></dd>
+    <dd class="odd"><a href="javascript:;">影棚器材</a></dd>
+    <dd class="odd"><a href="javascript:;">冲印服务</a></dd>
+    <dd class="odd"><a href="javascript:;">数码相框</a></dd>
+  </dl>
+  <dl class="odl">
+    <dt class="odt"><a href="javascript:;">数码配件 ></a></dt>
+    <dd class="odd"><a href="javascript:;">储存卡</a></dd>
+    <dd class="odd"><a href="javascript:;">三脚架/云台</a></dd>
+    <dd class="odd"><a href="javascript:;">相机包</a></dd>
+    <dd class="odd"><a href="javascript:;">滤镜</a></dd>
+    <dd class="odd"><a href="javascript:;">闪光灯/手柄</a></dd>
+    <dd class="odd"><a href="javascript:;">相机清洁/贴膜</a></dd>
+    <dd class="odd"><a href="javascript:;">机身附件</a></dd>
+    <dd class="odd"><a href="javascript:;">镜头附件</a></dd>
+    <dd class="odd"><a href="javascript:;">读卡器</a></dd>
+    <dd class="odd"><a href="javascript:;">支架</a></dd>
+    <dd class="odd"><a href="javascript:;">电池/充电器</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">影音娱乐 ></a></dt>
+    <dd class="odd"><a href="javascript:;">耳机/耳麦</a></dd>
+    <dd class="odd"><a href="javascript:;">影响/音箱</a></dd>
+    <dd class="odd"><a href="javascript:;">便携/无线影响</a></dd>
+    <dd class="odd"><a href="javascript:;">收音机</a></dd>
+    <dd class="odd"><a href="javascript:;">mp3/mp4</a></dd>
+    <dd class="odd"><a href="javascript:;">专业音频</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">智能设备 ></a></dt>
+    <dd class="odd"><a href="javascript:;">智能耳环</a></dd>
+    <dd class="odd"><a href="javascript:;">智能手表</a></dd>
+    <dd class="odd"><a href="javascript:;">智能眼镜</a></dd>
+    <dd class="odd"><a href="javascript:;">智能机器人</a></dd>
+    <dd class="odd"><a href="javascript:;">运动跟踪器</a></dd>
+    <dd class="odd"><a href="javascript:;">健康检测</a></dd>
+    <dd class="odd"><a href="javascript:;">智能配饰</a></dd>
+    <dd class="odd"><a href="javascript:;">体验车</a></dd>
+    <dd class="odd"><a href="javascript:;">其他配件</a></dd>
+  </dl>
+   <dl class="odl">
+    <dt class="odt"><a href="javascript:;">电子教育 ></a></dt>
+    <dd class="odd"><a href="javascript:;">学生平板</a></dd>
+    <dd class="odd"><a href="javascript:;">点读机/笔</a></dd>
+    <dd class="odd"><a href="javascript:;">早教益智</a></dd>
+    <dd class="odd"><a href="javascript:;">录音笔</a></dd>
+    <dd class="odd"><a href="javascript:;">电子书</a></dd>
+    <dd class="odd"><a href="javascript:;">电子词典</a></dd>
+    <dd class="odd"><a href="javascript:;">复读机</a></dd>
+    </dl>
+    </div>
+
+
+
+    </div>
+
+
+   
+
+
+
+
+    <div id="menu">
+    <div id="list">
+    <ul>
+    	<li id="tolist"><a href="javascript:;">家用电器</a></li>
+    	<li id="tolist1"><a href="javascript:;">手机</a><span>/</span><a href="javascript:;">运营商</a><span>/</span><a href="javascript:;">数码</a></li>
+    	<li><a href="javascript:;">电脑</a><span>/</span><a href="javascript:;">办公</a></li>
+    	<li><a href="javascript:;">家居</a><span>/</span><a href="javascript:;">家居</a><span>/</span><a href="javascript:;">家装</a><span>/</span><a href="javascript:;">厨具</a></li>
+    	<li><a href="javascript:;">男装</a><span>/</span><a href="javascript:;">女装</a><span>/</span><a href="javascript:;">童装</a><span>/</span><a href="javascript:;">内衣</a></li>
+    	<li><a href="javascript:;">美妆个护</a><span>/</span><a href="javascript:;">宠物</a></li>
+    	<li><a href="javascript:;">女鞋</a><span>/</span><a href="javascript:;">箱包</a><span>/</span><a href="javascript:;">钟表</a><span>/</span><a href="javascript:;">珠宝</a></li>
+    	<li><a href="javascript:;">男鞋</a><span>/</span><a href="javascript:;">运动</a><span>/</span><a href="javascript:;">户外</a></li>
+    	<li><a href="javascript:;">汽车</a><span>/</span><a href="javascript:;">汽车用品</a></li>
+    	<li><a href="javascript:;">母婴</a><span>/</span><a href="javascript:;">玩具乐器</a></li>
+    	<li><a href="javascript:;">食品</a><span>/</span><a href="javascript:;">酒类</a><span>/</span><a href="javascript:;">生鲜</a><span>/</span><a href="javascript:;">特产</a></li>
+    	<li><a href="javascript:;">医疗保健</a><span>/</span><a href="javascript:;">计生情趣</a></li>
+    	<li><a href="javascript:;">图书</a><span>/</span><a href="javascript:;">音像</a><span>/</span><a href="javascript:;">电子书</a></li>
+    	<li><a href="javascript:;">机票</a><span>/</span><a href="javascript:;">酒店</a><span>/</span><a href="javascript:;">旅游</a><span>/</span><a href="javascript:;">生活</a></li>
+    	<li><a href="javascript:;">理财</a><span>/</span><a href="javascript:;">众筹</a><span>/</span><a href="javascript:;">白条</a><span>/</span><a href="javascript:;">保险</a></li>
+    </ul>
+    </div>
+    <div id="logo">
+    <img src="图片01/07.jpeg" width="190px" height="180px" alt="">
+    </div>
+   
+  	</div>
+  	<div id="pic">
+  	<img id="img1" src="" alt="图片正在加载中......">
+    <a id="prev"  href="javascript:;"><</a>
+    <a id="next"  href="javascript:;">></a>
+    <ul>
+    </ul>
+  	</div>
+  	<div id="qiehuan">
+  	<div class="zc">
+    <div class="user">
+    <div class="tx">
+    <a><img src="图片01/10.jpg" width="50px" height="50px"></a>
+    </div>
+    <div class="dz">
+    <p>Hi,欢迎来到京...</p>
+    <a href="file:///D:/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/%E8%A1%A82.html">登录</a>
+    <a href="javascript:;">注册</a>
+    </div>
+    </div>
+    <a href="javascript:;"><span>新人福利</span></a>
+    <a href="javascript:;"><span>PLUS会员</span></a>
+    </div>
+
+
+    <div class="zclist">
+
+    <div id="zclist1">
+
+
+
+
+
+
+    <div id="news_tab_active"></div>
+      <a id="mod" href="">促销</a>
+       <a id="mod1" href="">公告</a>
+        <a class="new-more" href="" >更多</a>
+    </div>
+    <div id="zclist2">
+    <ul>
+     <li><a href="javascript:;">家居尖儿货买4免1抢先看</a></li>
+     <li><a href="javascript:;">喝啤酒，吃烧烤，买1赠1！</a></li>
+     <li><a href="javascript:;">英国ASDA超市开业低至五折</a></li>
+     <li><a href="javascript:;">每日享折扣 京东品质游</a></li>
+    </ul>
+     
+    </div>
+
+
+
+
+     <div id="zclist3">
+    <ul>
+     <li><a href="javascript:;">英国超市ASDA入驻京东</a></li>
+     <li><a href="javascript:;">京东与欧莱雅中国合作升级</a></li>
+     <li><a href="javascript:;">京东生鲜即刻赔 告别退货难</a></li>
+     <li><a href="javascript:;"> 京东成为中国最大家电零售商
+     </a></li>
+    </ul>
+     
+    </div>
+<div class="jd_severce">
+            <div class="jd_severce_nav">
+              <div id="sever_tab"></div>
+              <a href="javascript:;" id="jd_nav_ph">话费</a>
+              <span class="spacer_"></span>
+              <a href="javascript:;" id="jd_nav_jp">机票</a>
+              <span class="spacer_"></span>
+              <a href="javascript:;" id="jd_nav_jd">酒店</a>
+              <span class="spacer_"></span>
+              <a href="javascript:;" id="jd_nav_yx">游戏</a>
+            </div>
+              <!-- 手机机票部分 -->
+            <div id="jd_phone_sever">
+              <div id="phone_nav">
+                <ul>
+                  <li id="phone_hf"><a href="javascript:;">话费充值</a>
+                    <span class="sj"></span>
+                  </li>
+                  <li id="phone_ll"><a href="javascript:;">流量充值</a>
+                    <span class="sj"></span>
+                  </li>
+                  <li id="phone_tc"><a href="javascript:;">套餐变更</a>
+                    <span class="sj"></span>
+                  </li>
+                </ul>
+              </div>
+
+              <div id="phone_sever1">
+                <p>号码：<input type="text" name="huafei" class="tel" placeholder="电信/移动/联通"></p>
+                <p>面值
+                <select placeholder="100" id="rmb">
+                  <option value="20">20元</option>
+                  <option value="50">50元</option>
+                  <option value="80">80元</option>
+                  <option value="100" checked='checked'>100元</option>
+                  <option value="200">200元</option>
+                </select>
+                  <span id="rmb_txt">￥19.8~20元</span>
+                </p>
+                <p><a href="javascript:;" id="kscz">快速充值</a></p>
+                <p><a href="javascript:;" id="phone_hot">HOT</a><a href="javascript:;">抢8元话费劵！</a></p>
+              </div>
+              <div id="phone_sever2">
+                <p>号码：<input type="text" name="huafei" class="tel" placeholder="电信/移动/联通"></p>
+                <p>流量：
+                  <select name="" id="" class="chace_ll">
+                    <option value="">全国</option>
+                    <option value="">省内</option>
+                  </select>
+                  <select name="" id="" class="chace_ll">
+                    <option value="">50M</option>
+                    <option value="">100M</option>
+                    <option value="">200M</option>
+                    <option value="">300M</option>
+                    <option value="">500M</option>
+                  </select>
+                  <span>￥7.5~￥10</span>
+                </p>
+                <p style="margin-top: 20px;"><a href="javascript:;" id="kscz" >快速充值</a></p>
+                <p style="margin-top: 0px;"><a href="javascript:;" id="phone_hot">HOT</a><a href="javascript:;">App Store充值卡</a></p>
+              </div>
+              <div id="phone_sever3">
+                <p>号码：<input type="text" name="huafei" class="tel" placeholder="支持部分地区"></p>
+                <p>月费：
+                  <select name="" id="">
+                    <option value="">38元</option>
+                    <option value="">48元</option>
+                    <option value="">58元</option>
+                    <option value="">68元</option>
+                    <option value="">88元</option>
+                    <option value="" checked='checked'>138元</option>
+                  </select>
+                </p>
+                <p><a href="javascript:;" id="kscz">办理变更</a></p>
+                <p><a href="javascript:;" id="phone_hot">HOT</a><a href="javascript:;">低至8元！</a></p>
+              </div>
+            </div>
+            <!-- 机票部分 -->
+            <div id="jd_airplane_sever">
+              <div id="airplane_nav">
+                <ul>
+                  <li id="airplane_gn"><a href="javascript:;" >国内机票</a>
+                    <span class="sj"></span>
+                  </li>
+                  <li id="airplane_gj"><a href="javascript:;">国际/港澳台</a>
+                    <span class="sj"></span>
+                  </li>
+                  <li id="airplane_th"><a href="javascript:;">特惠活动</a>
+                    <span class="sj"></span>
+                  </li>
+                </ul>
+              </div>
+              <div id="airplane_sever1">
+                <p>
+                  <input type="radio"  checked="checked" name="chace">单程&nbsp;
+                  <input type="radio" name="chace">返程
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">出发</span><input type="text" placeholder="     城市" name="" class="go_txt">
+                  </span>
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">到发</span><input type="text" placeholder="     城市" name="" class="go_txt">
+                  </span>
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">日期</span><input type="text" placeholder="     出发" name="" class="go_txt">
+                  </span>
+                </p>
+                <p style="margin-top: 9px;"><a href="javascript:;" class="airplane_so">机票查询</a>&nbsp;<a href="javascript:;" style="font-size: 10px;">当季热门特惠机票</a></p>
+              </div>
+              <div id="airplane_sever2">
+                <p>
+                  <input type="radio"  checked="checked" name="chace">单程&nbsp;
+                  <input type="radio" name="chace">返程
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">出发</span><input type="text" placeholder="     城市" name="" class="go_txt">
+                  </span>
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">到发</span><input type="text" placeholder="     城市" name="" class="go_txt">
+                  </span>
+                </p>
+                <p>
+                  <span class="airplane_text">
+                    <span class="air_go">日期</span><input type="text" placeholder="     出发" name="" class="go_txt">
+                  </span>
+                </p>
+                <p style="margin-top: 9px;"><a href="javascript:;" class="airplane_so">机票查询</a>&nbsp;<a href="javascript:;" style="font-size: 10px;">国际机票任性搜</a></p>
+              </div>
+              <div id="airplane_img">
+                <a href="javascript:;"><img src="image/58f6e51cN67a9009e.jpg" alt=""></a>
+                <a href="javascript:;"><img src="image/58e45960N0c9ecb6a.jpg" alt=""></a>
+              </div>
+            </div>
+            <div id="jd_tavern_sever">
+              
+            </div>
+            <div id="jd_game_sever">
+              
+            </div>
+            </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  	</div>
+  	<div id="tu1">
+   <a   href="javascript:;"><img src="图片01/08.jpeg" width="390px" height="130px" alt=""></a>
+  	</div>
+  	<div id="tu2">
+  	 <a  href="javascript:;"><img src="图片01/09.jpeg" width="390px" height="130px" alt=""></a>
+  	</div>
+  </div>
+
+
+   <div id="botton">
+
+   <div class="obotton">
+
+   <div id="clock">
+
+   <div id="clock-text">
+    <span>京东秒杀</span>
+    <a href="javascript:;">总有你想不到的低价</a>
+   </div>
+   
+  <div id="oclock">
+  <div class="yuan" id="yuan1">
+  	
+  </div>
+  <span>:</span>
+ <div class="yuan" id="yuan2">
+	
+  </div>
+  <span class="dian">:</span>
+  <div class="yuan" id="yuan3">
+  	
+  </div>
+   </div>
+   <div  id="dc">
+   <span>当前场次</span>
+   </div>
+    <div  id="hg">
+   <span>后结束抢购</span>
+   </div>
+   </div>
+    
+   <div id="sk">
+   <div id="sk1">
+   <div id="sk2">
+      <ul>
+    <li><a href="javascript:;"><img src="图片01/35.jpg" ><p>联想(Lenovo)拯救者R720 15.6</br>英寸游戏笔记本电脑(i5-7300H)</p></a><span class="oo">¥5498.00</span><span class="op"><i>¥</i><del>6299.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/41.jpg" ><p>【京东超市】心相印卫生纸</nbsp>卷</br>纸筒</nbsp>心柔系列</nbsp>卷纸3层180g*2</p></a><span class="oo">¥59.90</span><span class="op"><i>¥</i><del>129.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/42.jpg"><P>闪迪(sanDisk)至尊超级速移</br>动MicoSDXC</nbsp> UHF-I存储卡 TF</P></a><span class="oo">¥229.00</span><span class="op"><i>¥</i><del>299.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/43.jpg" ><p>【京东超市】惠氏(wyeth)s-</br>26金装幼儿乐幼儿配方奶粉3段</p></a><span class="oo">¥156.00</span><span class="op"><i>¥</i><del>213.00</del></span></li>
+   
+   <li><a href="javascript:;"><img src="图片01/58.jpg" ><p>Apple iPad mini 4 平板电脑 7.</br>9英寸（128G WLAN版/A8芯片）银色</p></a><span class="oo">¥3088.00</span><span class="op"><i>¥</i><del>3688.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/59.jpg" ><p>【京东超市】Chanel香奈儿邂</nbsp>逅柔情淡香水 50ml（又名：香奈儿邂逅柔情淡香水（瓶装）50ml）</p></a><span class="oo">¥699.00</span><span class="op"><i>¥</i><del>739.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/60.jpg"><P>微软（Microsoft）Surface Pro 4 二合一平板电脑 （Intel Core M3 4G内存 128G存储 预装Win10 Office</P></a><span class="oo">¥4288.00</span><span class="op"><i>¥</i><del>5688.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/61.jpg" ><p>【京东超市】惠氏(wyeth)s-</br>26金装幼儿乐幼儿配方奶粉3段</p></a><span class="oo">¥156.00</span><span class="op"><i>¥</i><del>213.00</del></span></li>
+
+
+    <li><a href="javascript:;"><img src="图片01/62.jpg" ><p>【京东超市】三元 黄小蕉 香蕉</br>牛奶饮品200ml*12礼盒装</p></a><span class="oo">¥19.90</span><span class="op"><i>¥</i><del>58.80</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/63.jpg" ><p>【京东超市】日本尤妮佳（Mo</br>ony）婴儿纸尿裤（尿不湿） 大号L68片（9-14kg）（官方进口)</p></a><span class="oo">¥105.00</span><span class="op"><i>¥</i><del>199.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/64.jpg"><P>JBL GO 音乐金砖 蓝牙小音箱  </br>音响 低音炮 便携迷你音响 音箱 魂动红</P></a><span class="oo">¥248.00</span><span class="op"><i>¥</i><del>¥299.00</del></span></li>
+    <li><a href="javascript:;"><img src="图片01/65.jpg" ><p>阿迪达斯 adidas neo 男子 休闲</br>鞋 AQ1313 如图 41</p></a><span class="oo">¥328.00</span><span class="op"><i>¥</i><del>437.00</del></span></li>
+  </ul>
+    
+   </div>
+  <a id="pre"  href="javascript:;"><</a>
+ <a id="nex"  href="javascript:;">></a>
+   </div>
+ 
+
+    
+  <div class="special">
+
+    <img src="图片01/33.jpeg" width="200px" height="225px">
+  </div>
+
+   </div>
+   </div>
+   </div>
+
+
+<div id="bottom">
+<div class="bom"> 
+</div>
+ <div id="bottom1">
+  <div id="bottom2">
+    <div class="mod_help_nav">
+     <img src="图片01/49.jpg"><p class="mod_service_txt">品种齐全,轻松购物</p>
+  </div>
+   <div class="mod_help_nav">
+   <img src="图片01/46.jpg"><p class="mod_service_txt">多仓直发,急速配送</p>
+  </div>
+   <div class="mod_help_nav">
+   <img src="图片01/47.jpg"><p class="mod_service_txt">正品行货,精致服务</p>
+  </div>
+   <div class="mod_help_nav">
+    <img src="图片01/48.jpg"><p class="mod_service_txt">天天低价,畅选无忧</p>
+  </div>
+<div id="bottom3">
+  <div class="mod_service_unit">
+   <h5>购物指南</h5>
+   <ul>
+    <a href="javascript:;"><li>购物流程</li></a>
+    <a href="javascript:;"><li>会员介绍</li></a>
+    <a href="javascript:;"><li>生活旅行</li></a>
+    <a href="javascript:;"><li>常见问题</li></a>
+    <a href="javascript:;"><li>大家电</li></a>
+    <a href="javascript:;"><li>联系客服</li></a>
+   </ul>
+  </div>
+   <div class="mod_service_unit">
+    <h5>配送方式</h5>
+   <ul>
+    <a href="javascript:;"><li>上门自提</li></a>
+    <a href="javascript:;"><li>211限时达</li></a>
+    <a href="javascript:;"><li>配送服务查询</li></a>
+    <a href="javascript:;"><li>配送费收取标准</li></a>
+    <a href="javascript:;"><li>海外配送</li></a>
+   </ul>
+  </div>
+   <div class="mod_service_unit">
+    <h5>支付方式</h5>
+   <ul>
+    <a href="javascript:;"><li>货到付款</li></a>
+    <a href="javascript:;"><li>在线支付</li></a>
+    <a href="javascript:;"><li>分期付款</li></a>
+    <a href="javascript:;"><li>邮局汇款</li></a>
+    <a href="javascript:;"><li> 公司转账</li></a>
+   </ul>
+  </div>
+   <div class="mod_service_unit">
+    <h5>售后服务</h5>
+   <ul>
+    <a href="javascript:;"><li>售后政策</li></a>
+    <a href="javascript:;"><li>价格保护</li></a>
+    <a href="javascript:;"><li>退款说明</li></a>
+    <a href="javascript:;"><li>返修/退换货</li></a>
+    <a href="javascript:;"><li> 取消订单</li></a>
+   </ul>
+  </div>
+  <div class="mod_service_unit">
+    <h5>特色服务</h5>
+
+   <ul>
+    <a href="javascript:;"><li> 夺宝岛</li></a>
+    <a href="javascript:;"><li> DIY装机</li></a>
+    <a href="javascript:;"><li>延保服务</li></a>
+    <a href="javascript:;"><li>京东E卡</li></a>
+    <a href="javascript:;"><li>京东通信</li></a>
+    <a href="javascript:;"><li>京东JD+</li></a>
+   </ul>
+  </div>
+  <div class="mod_help_cover">
+   <h5>京东自营覆盖区县</h5>
+  <p>京东已向全国2661个区县提供自</br>营配送服务，支持货到付款、</br>POS机刷卡和售后上门服务。</p>
+  <a href="javascript:;">查看详情></a>
+  </div>
+</div>
+
+ </div>
+<div id="bottom4">
+  <a href="javascript:;">关于我们</a>
+  <span>|</span>
+  <a href="javascript:;">联系我们</a>
+  <span>|</span>
+  <a href="javascript:;">联系客服</a>
+  <span>|</span>
+  <a href="javascript:;">合作招商</a>
+  <span>|</span>
+  <a href="javascript:;">商家帮助</a>
+  <span>|</span>
+  <a href="javascript:;">营销中心</a>
+  <span>|</span>
+  <a href="javascript:;">手机京东</a>
+  <span>|</span>
+  <a href="javascript:;">友情链接</a>
+  <span>|</span>
+  <a href="javascript:;">销售联盟</a>
+  <span>|</span>
+  <a href="javascript:;">京东社区</a>
+  <span>|</span>
+  <a href="javascript:;">风险监测</a>
+  <span>|</span>
+  <a href="javascript:;">隐私政策</a>
+  <span>|</span>
+  <a href="javascript:;">京东公益</a>
+  <span>|</span>
+  <a href="javascript:;">English Site</a>
+  <span>|</span>
+  <a href="javascript:;">Contact Us</a>
+</div>
+<div id="bottom5">
+  <p>
+   <a href="javascript:;">京公网安备  1500002000088号</a>
+   <span>|</span>
+   <span>京ICP证070359号</span>
+   <span>|</span>
+   <a href="javascript:;">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>
+   <span>|</span>
+   <span>新出发京零 字第大120007号</span>
+  </p>
+  <p>
+   <span>互联网出版许可证编号新出网证(京)字150号</span>
+   <span>|</span>
+    <a href="javascript:;">出版物经营许可证</a>
+    <span>|</span>
+    <a href="javascript:;">网络文化经营许可证京网文[2014]2148-348号</a>
+    <span>|</span>
+    <span>违法和不良信息举报电话：4006561155</span>
+  </p>
+  <p>
+  <span>Copyright © 2004 - 2017  京东JD.com 版权所有</span>
+  <span>|</span> 
+  <span>消费者维权热线：4006067733    经营证照</span>
+  </p>
+  <p>
+   <span>京东旗下网站：京东钱包</span> 
+   <span>|</span>  
+   <span>京东云</span> 
+  </p>
+  <p>
+  <a href="javascript:;"> <img src="图片01/50.jpg" alt="" width="120" height="30"></a>
+  <a href="javascript:;"> <img src="图片01/51.jpg" alt="" width="120" height="30"></a>
+  <a href="javascript:;"> <img src="图片01/52.jpg" alt="" width="120" height="30"></a>
+  <a href="javascript:;"> <img src="图片01/53.jpg" alt="" width="120" height="30"></a>
+  <a href="javascript:;"> <img src="图片01/54.jpg" alt="" width="120" height="30"></a>
+  <a href="javascript:;"> <img src="图片01/55.jpg" alt="" width="120" height="30"></a>
+  </p>
+</div>
+
+
+
+</div>
+
+
+<div id="leftinr">
+<ul>
+  <li class="toplef"><a href="javascript:;"><span>享品质</span></a></li>
+  <li><a href="javascript:;"><span>服饰美妆</span></a></li>
+  <li><a href="javascript:;"><span>家电手机</span></a></li>
+  <li><a href="javascript:;"><span>电脑数码</span></a></li>
+  <li><a href="javascript:;"><span>3C运动</span></a></li>
+  <li><a href="javascript:;"><span>爱吃</span></a></li>
+  <li><a href="javascript:;"><span>母婴家居</span></a></li>
+  <li><a href="javascript:;"><span>图书汽车</span></a></li>
+  <li><a href="javascript:;"><span>虚拟</span></a></li>
+  <li><a href="javascript:;"><span>还没逛够</span></a></li>
+  <li class="botlef"><a href="javascript:;"><span>顶部▲</span></a></li>
+</ul>
+</div>
+</body>
+</html>
